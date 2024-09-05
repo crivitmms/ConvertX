@@ -1,0 +1,1 @@
+option('build_test_targets', type : 'boolean', value : false)
