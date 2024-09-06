@@ -68,51 +68,8 @@ ConvertX requires that all units be known at compile time.<br>
 This design ensures that conversions and calculations are optimized and validated during compilation, making use of constexpr wherever possible.<br> 
 For scenarios where units need to be determined at runtime, consider using tools like `std::variant` and `std::visit` to handle the logic dynamically.
 
-## Currently supported Units
-### Pressure Units
-- Pascal (Pa)
-- Kilopascal (kPa)
-- Bar
-- Pounds per Square Inch (PSI)
-- Atmosphere (atm)
-### Temperature Units
-- Celsius
-- Kelvin
-- Fahrenheit
-- Rankine
-### Length Units
-- Femtometer
-- Picometer
-- Nanometer
-- Micron
-- Micrometer
-- Millimeter
-- Centimeter
-- Decimeter
-- Meter
-- Decameter
-- Hectometer
-- Kilometer
-- Inch
-- Feet
-- Yards
-- Mile
-- Nautical Miles
-- Light Year
-- Astronomical Unit
-- Parsecs
-### Data sizes
-- Bits
-- Nibble
-- Bytes
-- Kilobytes
-- Megabytes
-- Gigabytes
-- Terabytes
-- Petabytes
-- Exabytes
-- Zettabytes
-- Yottabytes
+## Currently supported units
+### [Supported units list](README_UNITS.md)
 
 ## Options
 
