@@ -4,5 +4,6 @@
 #include "length.hpp"
 #include "pressure.hpp"
 #include "temperatur.hpp"
+#include "datasize.hpp"
 
 #endif // __CONVERTX_H__

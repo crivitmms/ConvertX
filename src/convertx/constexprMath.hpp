@@ -6,7 +6,8 @@ namespace ConvertX
     namespace Math
     {
 
-        constexpr double constexpr_pow(double base, int exp)
+        template<typename T>
+        constexpr inline T constexpr_pow(T base, int exp)
         {
             if (exp == 0)
             {
@@ -14,7 +15,7 @@ namespace ConvertX
             }
             else if (exp > 0)
             {
-                double result = 1.0;
+                T result = 1.0;
                 for (int i = 0; i < exp; ++i)
                 {
                     result *= base;
@@ -23,7 +24,7 @@ namespace ConvertX
             }
             else
             {
-                double result = 1.0;
+                T result = 1.0;
                 for (int i = 0; i < -exp; ++i)
                 {
                     result *= base;

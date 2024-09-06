@@ -101,6 +101,18 @@ For scenarios where units need to be determined at runtime, consider using tools
 - Light Year
 - Astronomical Unit
 - Parsecs
+### Data sizes
+- bits
+- nibble
+- bytes
+- kilobytes
+- megabytes
+- gigabytes
+- terabytes
+- petabytes
+- exabytes
+- zettabytes
+- yottabytes
 
 ## Dependencies
 

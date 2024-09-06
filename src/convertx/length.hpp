@@ -43,7 +43,7 @@ namespace ConvertX
         {
             switch (BaseUnit)
             {
-            case LengthUnit::FEMTOMETER: return _value * Math::constexpr_pow(10, -15);
+            case LengthUnit::FEMTOMETER: return _value * Math::constexpr_pow(10.0, -15);
             case LengthUnit::PICOMETER: return _value * 0.000'000'000'001;
             case LengthUnit::NANOMETER: return _value * 0.000'000'001;
             case LengthUnit::MICRON: [[fallthrough]];
@@ -60,9 +60,9 @@ namespace ConvertX
             case LengthUnit::YARDS: return _value * 0.91440000000000651052800000004635;
             case LengthUnit::MILE: return _value * 1609.3440000000102812619571200657;
             case LengthUnit::NAUTICALMILES: return _value * 1852;
-            case LengthUnit::LIGHTYEAR: return _value * 9.4607304725808 * Math::constexpr_pow(10, 15);
+            case LengthUnit::LIGHTYEAR: return _value * 9.4607304725808 * Math::constexpr_pow(10.0, 15);
             case LengthUnit::ASTRONOMICALUNIT: return _value * 149597870691;;
-            case LengthUnit::PARSECS: return _value * 3.0856776 * Math::constexpr_pow(10, 16);
+            case LengthUnit::PARSECS: return _value * 3.0856776 * Math::constexpr_pow(10.0, 16);
             default:
                 throw std::runtime_error("not a convertion unit");
                 // std::unreachable();
@@ -76,7 +76,7 @@ namespace ConvertX
                 return _value;
             switch (unit)
             {
-            case LengthUnit::FEMTOMETER: return convertToMeter() * Math::constexpr_pow(10, 15);
+            case LengthUnit::FEMTOMETER: return convertToMeter() * Math::constexpr_pow(10.0, 15);
             case LengthUnit::PICOMETER: return convertToMeter() * 1'000'000'000'000;
             case LengthUnit::NANOMETER: return convertToMeter() * 1'000'000'000;
             case LengthUnit::MICRON: [[fallthrough]];
@@ -93,9 +93,9 @@ namespace ConvertX
             case LengthUnit::YARDS: return convertToMeter() * 1.0936132983377;
             case LengthUnit::MILE: return convertToMeter() * 0.00062137119223733;
             case LengthUnit::NAUTICALMILES: return convertToMeter() * 0.00053995680345572354211663066954644;
-            case LengthUnit::LIGHTYEAR: return convertToMeter() * 1.0570008340246 * Math::constexpr_pow(10, -16);
-            case LengthUnit::ASTRONOMICALUNIT: return convertToMeter() * 6.6845871226706 * Math::constexpr_pow(10, -12);
-            case LengthUnit::PARSECS: return convertToMeter() * 3.2407792700054 * Math::constexpr_pow(10, -17);
+            case LengthUnit::LIGHTYEAR: return convertToMeter() * 1.0570008340246 * Math::constexpr_pow(10.0, -16);
+            case LengthUnit::ASTRONOMICALUNIT: return convertToMeter() * 6.6845871226706 * Math::constexpr_pow(10.0, -12);
+            case LengthUnit::PARSECS: return convertToMeter() * 3.2407792700054 * Math::constexpr_pow(10.0, -17);
             default:
                 throw std::runtime_error("not a convertion unit");
                 // std::unreachable();
