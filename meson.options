@@ -1,1 +1,3 @@
 option('build_test_targets', type : 'boolean', value : false)
+
+option('remove_literals', type : 'boolean', value : false)

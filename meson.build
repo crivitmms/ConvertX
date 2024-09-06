@@ -10,10 +10,17 @@ project(
 
 src_files = []
 header_only = []
+cpp_args = []
+
+if get_option('remove_literals')
+    cpp_args += '-DNO_LITERALS=1'
+    add_project_arguments(cpp_args, language: 'cpp')
+endif
 
 convertx_inc = include_directories('src', is_system: true)
 convertx_dep = declare_dependency(
     include_directories: convertx_inc,
+    compile_args: cpp_args,
 )
 
 if get_option('build_test_targets')

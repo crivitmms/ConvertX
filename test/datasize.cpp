@@ -22,6 +22,42 @@ using namespace Catch::Matchers;
     DataSize<DataUnit::ZETTABYTES>, \
     DataSize<DataUnit::YOTTABYTES>
 
+#ifndef NO_LITERALS
+
+TEST_CASE("DataSize User-defined Literals", "[datasize_literals]") {
+    auto size_in_bits = 64_bits;
+    REQUIRE(size_in_bits.getvalue() == 64.0);
+
+    auto size_in_bytes = 1024_bytes;
+    REQUIRE(size_in_bytes.getvalue() == 1024.0);
+
+    auto size_in_kib = 1.5_kib;
+    REQUIRE(size_in_kib.getvalue() == 1.5);
+
+    auto size_in_mib = 2_mib;
+    REQUIRE(size_in_mib.getvalue() == 2.0);
+
+    auto size_in_gib = 64_gib;
+    REQUIRE(size_in_gib.getvalue() == 64.0);
+
+    auto size_in_tib = 1.25_tib;
+    REQUIRE(size_in_tib.getvalue() == 1.25);
+
+    auto size_in_pib = 0.5_pib;
+    REQUIRE(size_in_pib.getvalue() == 0.5);
+
+    auto size_in_eib = 100_eib;
+    REQUIRE(size_in_eib.getvalue() == 100.0);
+
+    auto size_in_zib = 10_zib;
+    REQUIRE(size_in_zib.getvalue() == 10.0);
+
+    auto size_in_yib = 5_yib;
+    REQUIRE(size_in_yib.getvalue() == 5.0);
+}
+
+#endif
+
 TEMPLATE_TEST_CASE("DataSize Operations", "[DataSize][template]", DATA_UNIT_LIST)
 {
     SECTION("Addition"){

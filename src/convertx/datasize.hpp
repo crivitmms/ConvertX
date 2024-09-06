@@ -209,6 +209,32 @@ namespace ConvertX
         }
     };
 
+#ifndef NO_LITERALS
+
+#define DEFINE_DATASIZE_LITERAL(Unit, Suffix)                           \
+    constexpr DataSize<DataUnit::Unit> operator""_##Suffix(long double value) { \
+        return DataSize<DataUnit::Unit>(value);                         \
+    }                                                                   \
+    constexpr DataSize<DataUnit::Unit> operator""_##Suffix(unsigned long long value) { \
+        return DataSize<DataUnit::Unit>(value);                         \
+    }
+
+DEFINE_DATASIZE_LITERAL(BITS, bits)
+DEFINE_DATASIZE_LITERAL(NIBBLE, nibble)
+DEFINE_DATASIZE_LITERAL(BYTES, bytes)
+DEFINE_DATASIZE_LITERAL(KILOBYTES, kib)
+DEFINE_DATASIZE_LITERAL(MEGABYTES, mib)
+DEFINE_DATASIZE_LITERAL(GIGABYTES, gib)
+DEFINE_DATASIZE_LITERAL(TERABYTES, tib)
+DEFINE_DATASIZE_LITERAL(PETABYTES, pib)
+DEFINE_DATASIZE_LITERAL(EXABYTES, eib)
+DEFINE_DATASIZE_LITERAL(ZETTABYTES, zib)
+DEFINE_DATASIZE_LITERAL(YOTTABYTES, yib)
+
+#undef DEFINE_DATASIZE_LITERAL
+
+#endif
+
 }   // namespace ConvertX
 
 #endif   // __BYTESIZE_H__

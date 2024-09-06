@@ -102,17 +102,27 @@ For scenarios where units need to be determined at runtime, consider using tools
 - Astronomical Unit
 - Parsecs
 ### Data sizes
-- bits
-- nibble
-- bytes
-- kilobytes
-- megabytes
-- gigabytes
-- terabytes
-- petabytes
-- exabytes
-- zettabytes
-- yottabytes
+- Bits
+- Nibble
+- Bytes
+- Kilobytes
+- Megabytes
+- Gigabytes
+- Terabytes
+- Petabytes
+- Exabytes
+- Zettabytes
+- Yottabytes
+
+## Options
+
+- **`build_test_targets`**:  
+  *Default*: `false`  
+  When set to `true`, this enables building of the test targets, allowing unit tests to be compiled and run.
+
+- **`remove_literals`**:  
+  *Default*: `false`  
+  When set to `true`, this disables the use of user-defined literals (e.g., `_gib`, `_mib`) for easily creating `DataSize<DataUnit::Unit>` instances.
 
 ## Dependencies
 
