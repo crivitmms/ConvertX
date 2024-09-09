@@ -64,7 +64,7 @@ namespace ConvertX
             case LengthUnit::ASTRONOMICALUNIT: return _value * 149597870691;;
             case LengthUnit::PARSECS: return _value * 3.0856776 * Math::constexpr_pow(10.0, 16);
             default:
-                throw std::runtime_error("not a convertion unit");
+                throw std::runtime_error("not a conversion unit");
                 // std::unreachable();
             }
         }
@@ -97,7 +97,7 @@ namespace ConvertX
             case LengthUnit::ASTRONOMICALUNIT: return convertToMeter() * 6.6845871226706 * Math::constexpr_pow(10.0, -12);
             case LengthUnit::PARSECS: return convertToMeter() * 3.2407792700054 * Math::constexpr_pow(10.0, -17);
             default:
-                throw std::runtime_error("not a convertion unit");
+                throw std::runtime_error("not a conversion unit");
                 // std::unreachable();
             }
         }

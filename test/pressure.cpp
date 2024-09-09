@@ -22,13 +22,19 @@ TEMPLATE_TEST_CASE("Pressure Operations", "[Pressure][template]", PRESSURE_UNIT_
 {
     SECTION("Addition"){
         TestType unit(10);
-        unit += unit;
+        TestType unit2 = 10;
+        REQUIRE_THAT((unit+unit2).getvalue(), WithinAbs(20.0, 0.00000001));
+        REQUIRE_THAT((unit+10).getvalue(), WithinAbs(20.0, 0.00000001));
+        unit += unit2;
         REQUIRE_THAT(unit.getvalue(), WithinAbs(20.0, 0.00000001));
         unit += 100;
         REQUIRE_THAT(unit.getvalue(), WithinAbs(120.0, 0.00000001));
     }
     SECTION("Subtraction"){
         TestType unit(10);
+        TestType unit2 = 10;
+        REQUIRE_THAT((unit-unit2).getvalue(), WithinAbs(0.0, 0.00000001));
+        REQUIRE_THAT((unit-10).getvalue(), WithinAbs(0.0, 0.00000001));
         unit -= unit;
         REQUIRE_THAT(unit.getvalue(), WithinAbs(0.0, 0.00000001));
         unit -= 100;
@@ -36,6 +42,7 @@ TEMPLATE_TEST_CASE("Pressure Operations", "[Pressure][template]", PRESSURE_UNIT_
     }
     SECTION("Multiplication"){
         TestType unit(10);
+        REQUIRE_THAT((unit*10).getvalue(), WithinAbs(100.0, 0.00000001));
         unit *= 10;
         REQUIRE_THAT(unit.getvalue(), WithinAbs(100.0, 0.00000001));
         unit *= 0.1;
@@ -43,6 +50,7 @@ TEMPLATE_TEST_CASE("Pressure Operations", "[Pressure][template]", PRESSURE_UNIT_
     }
     SECTION("Division"){
         TestType unit(10);
+        REQUIRE_THAT((unit/10).getvalue(), WithinAbs(1.0, 0.00000001));
         unit /= 10;
         REQUIRE_THAT(unit.getvalue(), WithinAbs(1.0, 0.00000001));
         unit /= 0.1;
@@ -54,6 +62,10 @@ TEMPLATE_TEST_CASE("Pressure Operations", "[Pressure][template]", PRESSURE_UNIT_
         REQUIRE_THAT(unit.getvalue(), WithinAbs(0.0, 0.00000001));
         unit = 100;
         REQUIRE_THAT((unit % 9).getvalue(), WithinAbs(1.0, 0.00000001));
+    }
+    SECTION("throw"){
+        TestType unit(10);
+        REQUIRE_THROWS_WITH(unit.convertTo(static_cast<PressureUnit>(-1)), "not a conversion unit");
     }
 }
 

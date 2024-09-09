@@ -1,5 +1,5 @@
 
-test_files = files('length.cpp', 'pressure.cpp', 'temperatur.cpp', 'datasize.cpp')
+test_files = files('length.cpp', 'pressure.cpp', 'temperatur.cpp', 'datasize.cpp', 'math.cpp')
 
 convertx_test_17 = executable(
     'convertx_test_17',

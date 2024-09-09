@@ -29,7 +29,7 @@ namespace ConvertX
             case PressureUnit::PSI: return _value * 0.0689475728;
             case PressureUnit::ATMOSPHERE: return _value * 1.01325;
             default:
-                throw std::runtime_error("not a convertion unit");
+                throw std::runtime_error("not a conversion unit");
                 // std::unreachable();
             }
         }
@@ -47,7 +47,7 @@ namespace ConvertX
             case PressureUnit::PSI: return convertToBar() * 14.503773800722;
             case PressureUnit::ATMOSPHERE: return convertToBar() * 0.98692326671601;
             default:
-                throw std::runtime_error("not a convertion unit");
+                throw std::runtime_error("not a conversion unit");
                 // std::unreachable();
             }
         }

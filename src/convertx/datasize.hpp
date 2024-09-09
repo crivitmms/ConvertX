@@ -42,6 +42,9 @@ namespace ConvertX
             case DataUnit::EXABYTES: return _value * Math::constexpr_pow(1024.0, 6);
             case DataUnit::ZETTABYTES: return _value * Math::constexpr_pow(1024.0, 7);
             case DataUnit::YOTTABYTES: return _value * Math::constexpr_pow(1024.0, 8);
+            default:
+                throw std::runtime_error("not a conversion unit");
+                // std::unreachable();
             }
         }
 
@@ -63,6 +66,9 @@ namespace ConvertX
             case DataUnit::EXABYTES: return convertToByte() / Math::constexpr_pow(1024.0, 6);
             case DataUnit::ZETTABYTES: return convertToByte() / Math::constexpr_pow(1024.0, 7);
             case DataUnit::YOTTABYTES: return convertToByte() / Math::constexpr_pow(1024.0, 8);
+            default:
+                throw std::runtime_error("not a conversion unit");
+                // std::unreachable();
             }
         }
 
@@ -211,25 +217,27 @@ namespace ConvertX
 
 #ifndef NO_LITERALS
 
-#define DEFINE_DATASIZE_LITERAL(Unit, Suffix)                           \
-    constexpr DataSize<DataUnit::Unit> operator""_##Suffix(long double value) { \
-        return DataSize<DataUnit::Unit>(value);                         \
-    }                                                                   \
-    constexpr DataSize<DataUnit::Unit> operator""_##Suffix(unsigned long long value) { \
-        return DataSize<DataUnit::Unit>(value);                         \
+#define DEFINE_DATASIZE_LITERAL(Unit, Suffix)                                                                                                        \
+    constexpr DataSize<DataUnit::Unit> operator""_##Suffix(long double value)                                                                        \
+    {                                                                                                                                                \
+        return DataSize<DataUnit::Unit>(value);                                                                                                      \
+    }                                                                                                                                                \
+    constexpr DataSize<DataUnit::Unit> operator""_##Suffix(unsigned long long value)                                                                 \
+    {                                                                                                                                                \
+        return DataSize<DataUnit::Unit>(value);                                                                                                      \
     }
 
-DEFINE_DATASIZE_LITERAL(BITS, bits)
-DEFINE_DATASIZE_LITERAL(NIBBLE, nibble)
-DEFINE_DATASIZE_LITERAL(BYTES, bytes)
-DEFINE_DATASIZE_LITERAL(KILOBYTES, kib)
-DEFINE_DATASIZE_LITERAL(MEGABYTES, mib)
-DEFINE_DATASIZE_LITERAL(GIGABYTES, gib)
-DEFINE_DATASIZE_LITERAL(TERABYTES, tib)
-DEFINE_DATASIZE_LITERAL(PETABYTES, pib)
-DEFINE_DATASIZE_LITERAL(EXABYTES, eib)
-DEFINE_DATASIZE_LITERAL(ZETTABYTES, zib)
-DEFINE_DATASIZE_LITERAL(YOTTABYTES, yib)
+    DEFINE_DATASIZE_LITERAL(BITS, bits)
+    DEFINE_DATASIZE_LITERAL(NIBBLE, nibble)
+    DEFINE_DATASIZE_LITERAL(BYTES, bytes)
+    DEFINE_DATASIZE_LITERAL(KILOBYTES, kib)
+    DEFINE_DATASIZE_LITERAL(MEGABYTES, mib)
+    DEFINE_DATASIZE_LITERAL(GIGABYTES, gib)
+    DEFINE_DATASIZE_LITERAL(TERABYTES, tib)
+    DEFINE_DATASIZE_LITERAL(PETABYTES, pib)
+    DEFINE_DATASIZE_LITERAL(EXABYTES, eib)
+    DEFINE_DATASIZE_LITERAL(ZETTABYTES, zib)
+    DEFINE_DATASIZE_LITERAL(YOTTABYTES, yib)
 
 #undef DEFINE_DATASIZE_LITERAL
 

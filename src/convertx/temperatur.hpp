@@ -25,7 +25,7 @@ namespace ConvertX
             case TemperaturUnit::FAHRENHEIT: return (_value - 32) * 5 / 9 + 273.15;
             case TemperaturUnit::RANKINE: return _value * 5 / 9;
             default:
-                throw std::runtime_error("not a convertion unit");
+                throw std::runtime_error("not a conversion unit");
                 // std::unreachable();
             }
         }
@@ -35,10 +35,10 @@ namespace ConvertX
             {
             case TemperaturUnit::CELSIUS: return _value;
             case TemperaturUnit::KELVIN: return _value;
-            case TemperaturUnit::FAHRENHEIT: return (_value -32) * 5 / 9;
+            case TemperaturUnit::FAHRENHEIT: return (_value) * 5 / 9;
             case TemperaturUnit::RANKINE: return _value * 5 / 9;
             default:
-                throw std::runtime_error("not a convertion unit");
+                throw std::runtime_error("not a conversion unit");
                 // std::unreachable();
             }
         }
@@ -55,7 +55,7 @@ namespace ConvertX
             case TemperaturUnit::FAHRENHEIT: return convertToKelvinDiff() * 9 / 5;
             case TemperaturUnit::RANKINE: return convertToKelvinDiff() * 9 / 5;
             default:
-                throw std::runtime_error("not a convertion unit");
+                throw std::runtime_error("not a conversion unit");
                 // std::unreachable();
             }
         }
@@ -71,7 +71,7 @@ namespace ConvertX
             case TemperaturUnit::FAHRENHEIT: return (convertToKelvin() - 273.15) * 9 / 5 + 32;
             case TemperaturUnit::RANKINE: return convertToKelvin() * 9 / 5;
             default:
-                throw std::runtime_error("not a convertion unit");
+                throw std::runtime_error("not a conversion unit");
                 // std::unreachable();
             }
         }
