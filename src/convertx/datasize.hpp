@@ -213,6 +213,17 @@ namespace ConvertX
             _value++;
             return old;
         }
+
+        template <DataUnit IncommingUnit>
+        constexpr bool operator<(const DataSize<IncommingUnit> &other)
+        {
+            return _value < other.convertTo(BaseUnit);
+        }
+        template <DataUnit IncommingUnit>
+        constexpr bool operator>(const DataSize<IncommingUnit> &other)
+        {
+            return _value > other.convertTo(BaseUnit);
+        }
     };
 
 #ifndef NO_LITERALS

@@ -90,6 +90,18 @@ TEMPLATE_TEST_CASE("Temp Operations", "[Temperatur][template]", TEMP_UNIT_LIST)
             REQUIRE_THAT(unit.convertToDiff(TemperaturUnit::RANKINE), WithinAbs(10.0, 0.00000001));
         }
     }
+    SECTION("less than"){
+        TestType small(10);
+        TestType big(100);
+        REQUIRE(small < big);
+        REQUIRE(not(big < small));
+    }
+    SECTION("bigger than"){
+        TestType small(10);
+        TestType big(100);
+        REQUIRE(big > small);
+        REQUIRE(not(small > big));
+    }
 }
 
 TEMPLATE_TEST_CASE("Temp convertions", "[Temperatur][template]", TEMP_UNIT_LIST)

@@ -107,6 +107,18 @@ TEMPLATE_TEST_CASE("DataSize Operations", "[DataSize][template]", DATA_UNIT_LIST
         TestType unit(10);
         REQUIRE_THROWS_WITH(unit.convertTo(static_cast<DataUnit>(-1)), "not a conversion unit");
     }
+    SECTION("less than"){
+        TestType small(10);
+        TestType big(100);
+        REQUIRE(small < big);
+        REQUIRE(not(big < small));
+    }
+    SECTION("bigger than"){
+        TestType small(10);
+        TestType big(100);
+        REQUIRE(big > small);
+        REQUIRE(not(small > big));
+    }
 }
 
 TEMPLATE_TEST_CASE("DataSize convertions", "[DataSize][template]", DATA_UNIT_LIST)

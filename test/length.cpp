@@ -82,6 +82,18 @@ TEMPLATE_TEST_CASE("Length Operations", "[length][template]", LENGTH_UNIT_LIST)
         TestType unit(10);
         REQUIRE_THROWS_WITH(unit.convertTo(static_cast<LengthUnit>(-1)), "not a conversion unit");
     }
+    SECTION("less than"){
+        TestType small(10);
+        TestType big(100);
+        REQUIRE(small < big);
+        REQUIRE(not(big < small));
+    }
+    SECTION("bigger than"){
+        TestType small(10);
+        TestType big(100);
+        REQUIRE(big > small);
+        REQUIRE(not(small > big));
+    }
 }
 
 TEMPLATE_TEST_CASE("Length convertions", "[length][template]", LENGTH_UNIT_LIST)

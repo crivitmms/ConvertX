@@ -193,6 +193,17 @@ namespace ConvertX
             _value++;
             return old;
         }
+
+        template <PressureUnit IncommingUnit>
+        constexpr bool operator<(const Pressure<IncommingUnit> &other)
+        {
+            return _value < other.convertTo(BaseUnit);
+        }
+        template <PressureUnit IncommingUnit>
+        constexpr bool operator>(const Pressure<IncommingUnit> &other)
+        {
+            return _value > other.convertTo(BaseUnit);
+        }
     };
 
 }   // namespace ConvertX

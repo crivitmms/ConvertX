@@ -61,7 +61,7 @@ namespace ConvertX
             case LengthUnit::MILE: return _value * 1609.3440000000102812619571200657;
             case LengthUnit::NAUTICALMILES: return _value * 1852;
             case LengthUnit::LIGHTYEAR: return _value * 9.4607304725808 * Math::constexpr_pow(10.0, 15);
-            case LengthUnit::ASTRONOMICALUNIT: return _value * 149597870691;;
+            case LengthUnit::ASTRONOMICALUNIT: return _value * 149597870691; ;
             case LengthUnit::PARSECS: return _value * 3.0856776 * Math::constexpr_pow(10.0, 16);
             default:
                 throw std::runtime_error("not a conversion unit");
@@ -242,6 +242,17 @@ namespace ConvertX
             Length<BaseUnit> old = *this;
             _value++;
             return old;
+        }
+
+        template <LengthUnit IncommingUnit>
+        constexpr bool operator<(const Length<IncommingUnit> &other)
+        {
+            return _value < other.convertTo(BaseUnit);
+        }
+        template <LengthUnit IncommingUnit>
+        constexpr bool operator>(const Length<IncommingUnit> &other)
+        {
+            return _value > other.convertTo(BaseUnit);
         }
     };
 

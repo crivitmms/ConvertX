@@ -205,6 +205,17 @@ namespace ConvertX
             _value++;
             return old;
         }
+
+        template <TemperaturUnit IncommingUnit>
+        constexpr bool operator<(const Temperatur<IncommingUnit> &other)
+        {
+            return _value < other.convertTo(BaseUnit);
+        }
+        template <TemperaturUnit IncommingUnit>
+        constexpr bool operator>(const Temperatur<IncommingUnit> &other)
+        {
+            return _value > other.convertTo(BaseUnit);
+        }
     };
 
 }   // namespace ConvertX

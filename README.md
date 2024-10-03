@@ -19,7 +19,7 @@ ConvertX uses the Meson build system. To include ConvertX in your project, add i
 [wrap-git]
 directory = convertx
 url = git@github.com:crivitmms/ConvertX.git
-revision = V1.0
+revision = V1.2
 depth = 1
 ```
 ### `meson.build`
