@@ -67,17 +67,34 @@ TEMPLATE_TEST_CASE("Pressure Operations", "[Pressure][template]", PRESSURE_UNIT_
         TestType unit(10);
         REQUIRE_THROWS_WITH(unit.convertTo(static_cast<PressureUnit>(-1)), "not a conversion unit");
     }
-    SECTION("less than"){
+    SECTION("Less than"){
         TestType small(10);
         TestType big(100);
         REQUIRE(small < big);
+        REQUIRE(small < 100);
         REQUIRE(not(big < small));
+        REQUIRE(not(big < 10));
     }
-    SECTION("bigger than"){
+    SECTION("Bigger than"){
         TestType small(10);
         TestType big(100);
         REQUIRE(big > small);
+        REQUIRE(big > 10);
         REQUIRE(not(small > big));
+        REQUIRE(not(small > 100));
+    }
+    SECTION("Equal comparison") {
+        TestType small(10.0);
+        TestType big(10.001);
+        TestType same(10.0);
+
+        REQUIRE(small.equal(same));
+        REQUIRE(same.equal(10.0));
+        
+        REQUIRE(small.equal(big, 0.01));
+        REQUIRE_FALSE(small.equal(big));
+
+        REQUIRE_FALSE(big.equal(9.99));
     }
 }
 

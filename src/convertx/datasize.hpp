@@ -224,6 +224,29 @@ namespace ConvertX
         {
             return _value > other.convertTo(BaseUnit);
         }
+
+        template <typename T>
+        constexpr bool operator<(const T other)
+        {
+            return _value < other;
+        }
+        template <typename T>
+        constexpr bool operator>(const T other)
+        {
+            return _value > other;
+        }
+
+        template <typename T>
+        constexpr bool equal(const T &other, const T &maxdiff = std::numeric_limits<T>::epsilon()) const
+        {
+            return std::abs(_value - other) <= maxdiff;
+        }
+
+        template <DataUnit IncomingUnit>
+        constexpr bool equal(const DataSize<IncomingUnit> &other, const double maxdiff = std::numeric_limits<double>::epsilon()) const
+        {
+            return std::abs(_value - other.convertTo(BaseUnit)) <= maxdiff;
+        }
     };
 
 #ifndef NO_LITERALS

@@ -90,17 +90,34 @@ TEMPLATE_TEST_CASE("Temp Operations", "[Temperatur][template]", TEMP_UNIT_LIST)
             REQUIRE_THAT(unit.convertToDiff(TemperaturUnit::RANKINE), WithinAbs(10.0, 0.00000001));
         }
     }
-    SECTION("less than"){
+    SECTION("Less than"){
         TestType small(10);
         TestType big(100);
         REQUIRE(small < big);
+        REQUIRE(small < 100);
         REQUIRE(not(big < small));
+        REQUIRE(not(big < 10));
     }
-    SECTION("bigger than"){
+    SECTION("Bigger than"){
         TestType small(10);
         TestType big(100);
         REQUIRE(big > small);
+        REQUIRE(big > 10);
         REQUIRE(not(small > big));
+        REQUIRE(not(small > 100));
+    }
+    SECTION("Equal comparison") {
+        TestType small(10.0);
+        TestType big(10.001);
+        TestType same(10.0);
+
+        REQUIRE(small.equal(same));
+        REQUIRE(same.equal(10.0));
+        
+        REQUIRE(small.equal(big, 0.01));
+        REQUIRE_FALSE(small.equal(big));
+
+        REQUIRE_FALSE(big.equal(9.99));
     }
 }
 
